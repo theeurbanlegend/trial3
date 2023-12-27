@@ -1,0 +1,281 @@
+:root {
+  font-family: Inter;
+  margin:2px;
+  max-height: 100vh;
+}
+
+li{
+  list-style-type: none;
+  margin-right:20px;
+}
+#name{
+  margin-left: 20px;
+  font-weight: bolder;
+  font-size: medium;
+}
+.banner{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.banner img{
+  margin-top: 20px;
+  width:50vw;
+
+}
+.main .top{
+  margin: 0 0 5px 0;
+  background: linear-gradient(to left, rgba(0, 0, 255, 0.5), rgba(255, 0, 0, 0.5));
+}
+.intro{
+  font-size: 56px;
+  max-width: 40vw;
+}
+.main-footer{
+  text-align:center;
+}
+.appreciation{
+  text-align:right;
+  color:#646cff;
+  font-size: 10px;
+}
+.home{
+  display: flex;
+  width:100%;
+  height:100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+nav{
+  display:flex;
+  justify-content:space-between;
+  background-color: whitesmoke;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+ul{
+  display: flex;
+}
+li{
+  cursor: pointer;
+}
+.overlay {
+  position: absolute;
+  top:0;
+  max-width:300px;
+  max-height: fit-content;
+  z-index: 999;
+  right: 0;
+  margin-top: 40px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(236, 233, 233, 0.8);
+  color: #0c0606;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.social{
+  margin-right: 5px;
+  max-width:30px;
+  border-radius: 999px;
+}
+.socials li{
+ display: flex;
+ align-items: center;
+}
+li:hover .overlay{
+  opacity: 1;
+  visibility: visible;
+}
+nav a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+nav a:hover {
+  color: #535bf2;
+}
+
+
+body {
+  margin: 0;
+
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+footer{
+  height:10%;
+}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display:none;
+
+}
+
+.scrollbar{
+  display: flex;
+  background-color: gray;
+  align-items: center;
+  justify-content: space-around;
+  height: 30px;
+}
+.scroll-item{
+  color: #0c0606;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.scroll-item.active{
+  color:white;
+  background-color: gray;
+}
+.scroll-item:hover{
+  color: #ece7e7;
+}
+.current {
+  display:block;
+  background-color: none;
+}
+.slide{
+  width: 200px;
+  height: 200px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+.dotdiv{
+  text-align:center;
+}
+.posts-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 16px; /* Adjust as needed */
+  margin: 10px;
+}
+.post {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.post-id {
+  font-weight: bold;
+}
+
+.post-date {
+  color: #888;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 200px; /* Adjust as needed */
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.post-title {
+  margin-bottom: 8px;
+}
+
+.post-author {
+  color: #555;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  nav a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
