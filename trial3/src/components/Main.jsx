@@ -10,7 +10,7 @@ const Main = () => {
       <div className='top'>
       <div className='banner'>
         <p className='intro'>Hi, I'm Eliphaz and this is my space.</p>
-        <img src='main.jpg' alt='Eliphuz image' />
+        <img src='main.jpg' alt='Eliphuz image' loading="lazy"/>
       </div>
       <p>I post things of what I love doing! </p>
       <Slideshow />

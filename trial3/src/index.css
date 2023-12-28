@@ -3,7 +3,12 @@
   margin:2px;
   max-height: 100vh;
 }
-
+/* *img{
+  
+} */
+html{
+  width: 100%;
+}
 li{
   list-style-type: none;
   margin-right:20px;
@@ -112,8 +117,9 @@ footer{
 }
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
   position: relative;
+  display: flex;
+  justify-content: center;
   margin: auto;
 }
 
@@ -168,6 +174,10 @@ footer{
 }
 
 /* Position the "next button" to the right */
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
@@ -278,4 +288,79 @@ footer{
   button {
     background-color: #f9f9f9;
   }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  nav a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+@media screen and (max-width: 320px) {
+  .scroll-item {
+    margin-left: 15px; /* Adjust margin for smaller screens */
+  }
+  .scroll-item:first-child {
+    margin-left:10px; /* Remove margin for the first scroll item on smaller screens */
+  }
+}
+@media screen and (max-width: 375px) {
+  .scroll-item {
+    margin-left: 15px; /* Adjust margin for smaller screens */
+  }
+  .scroll-item:first-child {
+    margin-inline-start: 40px; /* Remove margin for the first scroll item on smaller screens */
+  }
+}
+@media screen and (max-width: 425px) {
+  .scroll-item {
+    margin-left: 15px; /* Adjust margin for smaller screens */
+  }
+  .scroll-item:first-child {
+    margin-left:30px; /* Remove margin for the first scroll item on smaller screens */
+  }
+}
+/* Media query for screens less than 768px */
+@media screen and (max-width: 768px) {
+  #name {
+    margin-left: 10px; /* Adjust margin for smaller screens */
+    font-size: small; /* Adjust font size for smaller screens */
+  }
+
+  .banner img {
+    width: 60vw; /* Adjust image width for smaller screens */
+  }
+
+  .intro {
+    font-size: 36px; /* Adjust font size for smaller screens */
+    max-width: 80vw; /* Adjust max-width for smaller screens */
+  }
+
+  /* Add more styles as needed for smaller screens */
+  .posts-container {
+    grid-template-columns: 1fr; /* Display posts in a single column for smaller screens */
+  }
+  .home {
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .scrollbar {
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    overflow:scroll;
+     /* Adjust height for smaller screens */
+  }
+  .scroll-item {
+    margin-left: 15px; /* Adjust margin for smaller screens */
+  }
+  .scroll-item:first-child {
+    margin-left:10px; /* Remove margin for the first scroll item on smaller screens */
+  }
+
 }

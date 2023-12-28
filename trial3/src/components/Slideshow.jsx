@@ -20,7 +20,7 @@ const Slideshow = () => {
       <div className="slideshow-container">
         {[1, 2, 3].map((index) => (
           <div key={index} className={`mySlides fade ${slideIndex === index ? 'current' : ''}`}>
-            <img src={`pic${index}.jpg`} className='slide' alt={`Slide ${index}`} />
+            <img loading="lazy" src={`pic${index}.jpg`} className='slide' alt={`Slide ${index}`} />
           </div>
         ))}
 

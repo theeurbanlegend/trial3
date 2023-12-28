@@ -7,7 +7,7 @@ const Post = ({ id, datePosted, poster, subjectSummary, imageUrl }) => {
         <span className="post-date">{datePosted}</span>
       </div>
       <div className="post-content">
-        <img src={imageUrl} alt={`Post ${id}`} className="post-image" />
+        <img loading="lazy" src={imageUrl} alt={`Post ${id}`} className="post-image" />
         <h3 className="post-title">{subjectSummary}</h3>
         <p className="post-author">Posted by {poster}</p>
       </div>
