@@ -1,27 +1,47 @@
 import React, { useEffect, useState } from 'react';
-import posts from '../assets/sample';
 import Post from './Post';
 
 const Posts = ({ selectedCategory }) => {
   const [obtainedPosts, setObtainedPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Assuming posts is an array of posts
-    // Filter posts based on the selected category
-    const filteredPosts = posts.filter((post) => post.category === selectedCategory);
-    setObtainedPosts(filteredPosts);
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        console.log("Fetching posts");
+        const response = await fetch('http://localhost:8080/api/posts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+
+        const data = await response.json();
+        
+        // Filter posts based on the selected category
+        const filteredPosts = data.filter((post) => post.category === selectedCategory);
+        setObtainedPosts(filteredPosts);
+      } catch (error) {
+        console.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
   }, [selectedCategory]);
 
   return (
     <div className="posts-container">
-      {obtainedPosts.map((post) => (
+      {loading && <p>Fetching posts...</p>}
+      {!loading && obtainedPosts.length === 0 && <p>No posts yet.</p>}
+      {!loading && obtainedPosts.map((post) => (
         <Post
-          key={post.id}
-          id={post.id}
-          datePosted={post.datePosted}
+          key={post._id}
+          id={post.postTitle}
+          datePosted={post.createdAt}
           poster={post.poster}
-          subjectSummary={post.subjectSummary}
-          imageUrl={post.imageUrl}
+          subjectSummary={post.postSummary}
+          imageUrl={post.image}
         />
       ))}
     </div>

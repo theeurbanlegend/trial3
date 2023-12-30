@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .post {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .post img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Posts</h1>
+  <div id="posts-container"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const postsContainer = document.getElementById('posts-container');
+
+      // Fetch posts from the server
+      fetch('http://localhost:8080/api/posts') // Update the URL as needed
+        .then(response => response.json())
+        .then(posts => {
+          // Render each post
+          posts.forEach(post => {
+            const postElement = createPostElement(post);
+            postsContainer.appendChild(postElement);
+          });
+        })
+        .catch(error => console.error('Error fetching posts:', error));
+
+      // Function to create a post element
+      function createPostElement(post) {
+        const postElement = document.createElement('div');
+        postElement.classList.add('post');
+
+        // Display post details
+        const details = `
+          <h2>${post.postTitle}</h2>
+          <p>By ${post.poster}</p>
+          <p>${post.postSummary}</p>
+          <p>Likes: ${post.likes}</p>
+        `;
+        postElement.innerHTML = details;
+
+        // Display the image, if available
+        if (post.image && post.image.filename) {
+          const imageElement = document.createElement('img');
+          imageElement.src = `http://localhost:8080/api/image/${post.image.filename}`; // Update the URL as needed
+          imageElement.alt = 'Post Image';
+          postElement.appendChild(imageElement);
+        }
+
+        return postElement;
+      }
+    });
+  </script>
+</body>
+</html>

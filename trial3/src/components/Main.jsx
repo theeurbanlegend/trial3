@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import Slideshow from './Slideshow';
 import ScrollBar from './ScrollBar';
 import Posts from './Posts';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState('NEW');
   return (
+    <>
+    <Navbar/>
     <div className='main'>
       <div className='top'>
       <div className='banner'>
@@ -18,6 +22,8 @@ const Main = () => {
       <ScrollBar setSelectedCategory={setSelectedCategory} />
       <Posts selectedCategory={selectedCategory} />
     </div>
+    <Footer/>
+    </>
   );
 };
 

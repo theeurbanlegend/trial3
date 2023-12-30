@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>File Upload Preview</title>
+  </head>
+  <body>
+    <h1>File Upload Preview</h1>
+    <form id="uploadForm" action="http://localhost:8080/api/new" method="post" enctype="multipart/form-data">
+      <label for="image">Choose an image:</label>
+      <input type="file" name="image" id="fileInput" onchange="previewFile()">
+      <br>
+      <img src="" id="previewImg" style="display:none; width: 40%;">
+      <br>
+      <label for="postTitle">Post Title:</label>
+      <input type="text" name="postTitle" id="postTitle">
+      <br>
+      <label for="poster">Poster:</label>
+      <input type="text" name="poster" id="poster">
+      <br>
+      <label for="postSummary">Post Summary:</label>
+      <textarea name="postSummary" id="postSummary"></textarea>
+      <br>
+      <label for="likes">Likes:</label>
+      <input type="number" name="likes" id="likes" min="0">
+      <br>
+      <button type="button" onclick="submitForm()">Upload</button>
+    </form>
+    <script>
+      function previewFile() {
+        const preview = document.getElementById('previewImg');
+        const file = document.getElementById('fileInput').files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+          preview.src = reader.result;
+          preview.style.display = "block";
+        }, false);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      }
+
+      function submitForm() {
+        const form = document.getElementById('uploadForm');
+
+        // Your additional form validation logic goes here
+
+        // Prevent default form submission
+        event.preventDefault();
+
+        // Perform any additional form validation here
+        // ...
+
+        // Manually submit the form using JavaScript
+        form.submit();
+      }
+    </script>
+  </body>
+</html>
