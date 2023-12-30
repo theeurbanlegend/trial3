@@ -55,7 +55,7 @@ const AddPost = () => {
       formData.append('postSummary', postSummary);
   
       // Manually submit the form using JavaScript with progress tracking
-      fetch('http://localhost:8080/api/new', {
+      fetch('https://posts-back.onrender.com/api/new', {
         method: 'POST',
         body: formData,
         // Track progress

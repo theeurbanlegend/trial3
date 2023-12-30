@@ -10,7 +10,7 @@ const Posts = ({ selectedCategory }) => {
       try {
         setLoading(true);
         console.log("Fetching posts");
-        const response = await fetch('http://localhost:8080/api/posts');
+        const response = await fetch('https://posts-back.onrender.com/api/posts');
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }

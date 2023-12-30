@@ -8,7 +8,7 @@ const Post = ({ id, datePosted, poster, subjectSummary, imageUrl }) => {
       </div>
       <div className="post-content">
         {imageUrl && (
-          <img loading="lazy" src={`http://localhost:8080/api/image/${imageUrl.filename}`} alt={`Post ${id}`} className="post-image" />
+          <img loading="lazy" src={`https://posts-back.onrender.com/api/image/${imageUrl.filename}`} alt={`Post ${id}`} className="post-image" />
         )}
         <h3 className="post-title">{subjectSummary}</h3>
         <p className="post-author">Posted by {poster}</p>
