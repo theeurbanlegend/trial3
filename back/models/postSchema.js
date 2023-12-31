@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
   postTitle:{type:String},
   postSummary:{type:String},
   likes:{type:String},
-  image: {
+  file: {
     filename: {type:String}
   },
   category: {

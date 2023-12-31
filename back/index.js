@@ -6,7 +6,11 @@ require('dotenv').config()
 const app=express()
 connectDB()
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+    {origin:process.env.TRUSTED_URL
+    }
+))
+console.log(process.env.TRUSTED_URL)
 app.use('/api',route)
 
 app.listen(process.env.PORT,()=>{

@@ -28,22 +28,29 @@ const addPost = async (req, res) => {
   if (!poster || !postTitle || !postSummary  || !req.file) {
     return res.status(400).json({ msg: 'Inadequate post data or missing file' });
   }
-
-  const image = req.file;
+  const file = req.file;
  // Access file buffer directly
- const fileBuffer = image.buffer;
+ const fileBuffer = file.buffer;
 
   // Create a write stream to GridFS
-  const writeStream = gfs.openUploadStream(image.originalname, {
+  const writeStream = gfs.openUploadStream(file.originalname, {
     metadata: {
       // Use mongoose.mongo.ObjectId
       _id: new mongoose.mongo.ObjectId(),
     },
   });
+  // Log progress for writing data to the database
+  let progress = 0;
+  
 
 // Write the file buffer to the stream
   writeStream.end(fileBuffer);
-
+  writeStream.on('data', (chunk) => {
+    progress += chunk.length;
+    const totalSize = writeStream.s.currentSize;
+    const percent = Math.round((progress / totalSize) * 100);
+    console.log(`Database Write Progress: ${percent}%`);
+  });
   // Handle errors
   writeStream.on('error', (err) => {
     console.error(err);
@@ -56,7 +63,7 @@ const addPost = async (req, res) => {
       postTitle,
       postSummary,
       likes:0,
-      image: { filename: image.originalname },
+      file: { filename: file.originalname },
       category,
     });
 
@@ -73,13 +80,14 @@ const addPost = async (req, res) => {
 };
 
 const addPostWithUpload = (req, res, next) => {
-  upload.single('image')(req, res, (err) => {
+  upload.single('files')(req, res, (err) => {
     if (err) {
       return res.status(500).json({ msg: 'File upload error' });
     }
     addPost(req, res, next);
   });
 };
+
 const addLike = async(req, res) => {
   const {id}=req.params
     

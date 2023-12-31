@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Post from './Post';
 
 const Posts = ({ selectedCategory }) => {
+  const url=import.meta.env.VITE_BACKEND_SERVER_URL
   const [obtainedPosts, setObtainedPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +11,7 @@ const Posts = ({ selectedCategory }) => {
       try {
         setLoading(true);
         console.log("Fetching posts");
-        const response = await fetch('https://posts-back.onrender.com/api/posts');
+        const response = await fetch(`${url}/api/posts`);
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
@@ -41,7 +42,7 @@ const Posts = ({ selectedCategory }) => {
           datePosted={post.createdAt}
           poster={post.poster}
           subjectSummary={post.postSummary}
-          imageUrl={post.image}
+          imageUrl={post.file}
         />
       ))}
     </div>
