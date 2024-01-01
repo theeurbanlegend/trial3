@@ -19,6 +19,7 @@
   margin-top: 10px;
   border-radius: 8px;
 }
+
 .drop-zone {
   border: 2px dashed #ccc;
   padding: 20px;
@@ -29,6 +30,43 @@
 .drop-zone p {
   margin: 0;
 }
+/* Add these styles to your CSS */
+
+/* Styling for audio player container */
+.audio-container {
+  position: relative;
+}
+
+/* Styling for audio player */
+audio {
+  width: calc(100% - 40px); /* Adjust width for the buttons */
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Styling for audio controls */
+.audio-controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+/* Styling for audio control buttons */
+.audio-control-button {
+  padding: 5px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Add more styles as needed */
 
 .drop-zone:hover {
   border-color: #4caf50;

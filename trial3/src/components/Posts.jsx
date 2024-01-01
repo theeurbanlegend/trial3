@@ -39,6 +39,7 @@ const Posts = ({ selectedCategory }) => {
         <Post
           key={post._id}
           id={post.postTitle}
+          vidId={post._id}
           datePosted={post.createdAt}
           poster={post.poster}
           subjectSummary={post.postSummary}
